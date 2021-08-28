@@ -1,10 +1,10 @@
 const Sequelize = require("sequelize");
-
+const Role = require("./Models/Role.ts")
 let DBConfig = require('../appConfig.js').databaseConnection
 
 class MySequelize {
 
-    static sequelize = new Sequelize(DBConfig.database, DBConfig.username, DBConfig.password, {
+     sequelize = new Sequelize(DBConfig.database, DBConfig.username, DBConfig.password, {
         host: DBConfig.host,
         dialect: DBConfig.dialect,
         pool: {
@@ -14,14 +14,19 @@ class MySequelize {
         }
     });
 
-    static initSequelize() {
-        MySequelize.sequelize.authenticate().then(() => {
+     async initSequelize() {
+        this.sequelize.authenticate().then(() => {
             console.log("MySequelize successful authentication to BD!");
         }).catch((err) => {
             console.log(err);
         });
+
+        Role.initRole(this.sequelize)
+
+        await this.sequelize.sync();
+        console.log("All models were synchronized successfully.");
     }
 
 }
 
-module.exports = MySequelize
+module.exports = new MySequelize()
