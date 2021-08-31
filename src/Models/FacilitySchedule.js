@@ -1,9 +1,9 @@
 const {Model, DataTypes, Deferrable} = require("sequelize");
 
-class PlanSchedule extends Model {
+class FacilitySchedule extends Model {
 
     static initModel(sequelize) {
-        PlanSchedule.init({
+        FacilitySchedule.init({
             hourFrom: {
                 type: DataTypes.DATE,
                 allowNull: false
@@ -17,11 +17,10 @@ class PlanSchedule extends Model {
     }
 
     static associateModel() {
-        PlanSchedule.belongsTo(require('./Plan.ts'))
-        PlanSchedule.belongsTo(require('./Activity.ts'))
-        PlanSchedule.belongsTo(require('./Facility.ts'))
+        FacilitySchedule.belongsTo(require('./Facility.js'))
+        FacilitySchedule.belongsTo(require('./Activity.js'))
     }
 
 }
 
-module.exports = PlanSchedule
+module.exports = FacilitySchedule

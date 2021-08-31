@@ -43,8 +43,8 @@ class User extends Model {
     }
 
     static associateModel() {
-        User.hasOne(require('./Client.ts'))
-        User.hasOne(require('./Employee.ts'))
+        User.hasOne(require('./Client.js'))
+        User.hasOne(require('./Employee.js'))
     }
 
 }

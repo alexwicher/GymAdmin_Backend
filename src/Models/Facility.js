@@ -27,10 +27,10 @@ class Facility extends Model {
     }
 
     static associateModel() {
-        Facility.hasOne(require('./FacilitySchedule.ts'))
-        Facility.hasMany(require('./PlanSchedule.ts'))
-        Facility.hasMany(require('./Inventory.ts'))
-        Facility.belongsToMany(require('./Employee.ts'), {through: 'EmployeeFacility'});
+        Facility.hasOne(require('./FacilitySchedule.js'))
+        Facility.hasMany(require('./PlanSchedule.js'))
+        Facility.hasMany(require('./Inventory.js'))
+        Facility.belongsToMany(require('./Employee.js'), {through: 'EmployeeFacility'});
     }
 
 }

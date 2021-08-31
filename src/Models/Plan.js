@@ -1,23 +1,23 @@
 const {Model, DataTypes, Deferrable} = require("sequelize");
 
-class Inventory extends Model {
+class Plan extends Model {
 
     static initModel(sequelize) {
-        Inventory.init({
-            productName: {
+        Plan.init({
+            planName: {
                 type: DataTypes.STRING,
                 allowNull: false,
                 unique: true
             },
-            productNameSlug: {
+            planNameSlug: {
                 type: DataTypes.STRING,
                 unique: true
             },
-            units: {
-                type: DataTypes.INTEGER,
-                defaultValue: 1
+            dateCreated: {
+                type: DataTypes.DATE,
+                defaultValue: new Date()
             },
-            pricePerUnit: {
+            costPerMonth: {
                 type: DataTypes.DECIMAL(9, 2),
                 allowNull: false
             }
@@ -26,10 +26,10 @@ class Inventory extends Model {
     }
 
     static associateModel() {
-        Inventory.belongsTo(require('./ProductCategory.ts'))
-        Inventory.belongsTo(require('./Facility.ts'))
+        Plan.hasMany(require('./Membership.js'))
+        Plan.hasMany(require('./PlanSchedule.js'))
     }
 
 }
 
-module.exports = Inventory
+module.exports = Plan

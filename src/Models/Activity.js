@@ -22,8 +22,8 @@ class Activity extends Model {
     }
 
     static associateModel() {
-        Activity.hasMany(require('./FacilitySchedule.ts'))
-        Activity.hasMany(require('./PlanSchedule.ts'))
+        Activity.hasMany(require('./FacilitySchedule.js'))
+        Activity.hasMany(require('./PlanSchedule.js'))
     }
 
 }

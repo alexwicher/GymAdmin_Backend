@@ -1,26 +1,30 @@
 const {Model, DataTypes, Deferrable} = require("sequelize");
 
-class ProductCategory extends Model {
+class Role extends Model {
 
     static initModel(sequelize) {
-        ProductCategory.init({
-            productCategory: {
+        Role.init({
+            roleName: {
                 type: DataTypes.STRING,
                 allowNull: false,
                 unique: true
             },
-            productCategorySlug: {
+            roleNameSlug: {
                 type: DataTypes.STRING,
                 unique: true
             },
+            dateCreated: {
+                type: DataTypes.DATE,
+                defaultValue: new Date()
+            }
 
         }, {sequelize})
     }
 
     static associateModel() {
-        ProductCategory.hasMany(require('./Inventory.ts'))
+        Role.hasMany(require('./Employee.js'))
     }
 
 }
 
-module.exports = ProductCategory
+module.exports = Role

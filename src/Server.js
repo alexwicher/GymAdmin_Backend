@@ -1,5 +1,5 @@
-const sequelize = require('./MySequelize.ts')
-const Router = require("./Router.ts")
+const sequelize = require('./MySequelize.js')
+const Router = require("./Router.js")
 
 let serverConfig = require('../appConfig.js').server
 

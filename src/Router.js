@@ -1,4 +1,4 @@
-const RoleController = require('./Controllers/RoleController.ts')
+const RoleController = require('./Controllers/RoleController.js')
 
 class Router {
 
@@ -8,7 +8,11 @@ class Router {
         })
 
         fastify.get('/roles', async (request, reply) => {
-            return RoleController.getAllRoles()
+            return RoleController.getAllRoles(request, reply)
+        })
+
+        fastify.post('/roles/create', async (request, reply) => {
+            return RoleController.createRole(request, reply)
         })
     }
 

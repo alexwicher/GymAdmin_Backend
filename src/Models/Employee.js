@@ -7,9 +7,9 @@ class Employee extends Model {
     }
 
     static associateModel() {
-        Employee.belongsTo(require('./Role.ts'))
-        Employee.belongsTo(require('./User.ts'))
-        Employee.belongsToMany(require('./Facility.ts'), {through: 'EmployeeFacility'});
+        Employee.belongsTo(require('./Role.js'))
+        Employee.belongsTo(require('./User.js'))
+        Employee.belongsToMany(require('./Facility.js'), {through: 'EmployeeFacility'});
     }
 
 }

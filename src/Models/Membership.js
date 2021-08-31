@@ -29,8 +29,8 @@ class Membership extends Model {
     }
 
     static associateModel() {
-        Membership.hasOne(require('./Client.ts'))
-        Membership.belongsTo(require('./Plan.ts'))
+        Membership.hasOne(require('./Client.js'))
+        Membership.belongsTo(require('./Plan.js'))
     }
 }
 
