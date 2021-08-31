@@ -29,6 +29,7 @@ class Facility extends Model {
     static associateModel() {
         Facility.hasOne(require('./FacilitySchedule.ts'))
         Facility.hasMany(require('./PlanSchedule.ts'))
+        Facility.hasMany(require('./Inventory.ts'))
         Facility.belongsToMany(require('./Employee.ts'), {through: 'EmployeeFacility'});
     }
 

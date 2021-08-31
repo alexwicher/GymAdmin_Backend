@@ -27,6 +27,7 @@ class Inventory extends Model {
 
     static associateModel() {
         Inventory.belongsTo(require('./ProductCategory.ts'))
+        Inventory.belongsTo(require('./Facility.ts'))
     }
 
 }
