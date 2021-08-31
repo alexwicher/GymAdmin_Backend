@@ -2,7 +2,7 @@ const {Model, DataTypes, Deferrable} = require("sequelize");
 
 class Role extends Model {
 
-    static initRole(sequelize) {
+    static initModel(sequelize) {
         Role.init({
             roleName: {
                 type: DataTypes.STRING,
@@ -18,7 +18,11 @@ class Role extends Model {
                 defaultValue: new Date()
             }
 
-        }, {sequelize,tableName: 'role'})
+        }, {sequelize})
+    }
+
+    static associateModel() {
+        Role.hasMany(require('./Employee.ts'))
     }
 
 }
