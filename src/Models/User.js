@@ -33,12 +33,7 @@ class User extends Model {
             passwordHash: {
                 type: DataTypes.STRING,
                 unique: true
-            },
-            dateCreated: {
-                type: DataTypes.DATE,
-                defaultValue: new Date()
             }
-
         }, {sequelize})
     }
 

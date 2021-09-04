@@ -1,13 +1,25 @@
 const RoleController = require('./Controllers/RoleController.js')
+const UserController = require("./Controllers/UserController");
 
 class Router {
 
-    static async routes(fastify, options) {
+    static async routes(fastify, auth, options) {
 
         fastify.get('/', async (request, reply) => {
             return {hello: 'WHAT ARE YOU DOING IN MY SWAMP??!!!!'}
         })
 
+//-----------JWT--------------------------------------
+
+        fastify.get('/user/refresh', async (req, reply) => {
+            return UserController.refreshJWT(req, reply, fastify)
+        })
+
+        fastify.post('/user/signup', async (req, reply) => {
+            return UserController.signUp(req, reply, fastify)
+        })
+
+//-----------JWT--------------------------------------
 //-----------Activity--------------------------------------
 
         fastify.get('/activities', async (request, reply) => {
