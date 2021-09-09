@@ -17,10 +17,6 @@ class Facility extends Model {
             },
             phone: {
                 type: DataTypes.STRING
-            },
-            dateCreated: {
-                type: DataTypes.DATE,
-                defaultValue: new Date()
             }
 
         }, {sequelize})

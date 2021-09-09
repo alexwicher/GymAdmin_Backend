@@ -1,4 +1,4 @@
-const config = require("../appConfig");
+const config = require("../../appConfig");
 
 class GeneralUtils {
 
