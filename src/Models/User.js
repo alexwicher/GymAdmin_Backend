@@ -33,6 +33,10 @@ class User extends Model {
             passwordHash: {
                 type: DataTypes.STRING,
                 unique: true
+            },
+            sessionJWT: {
+                type: DataTypes.STRING,
+                unique: true
             }
         }, {sequelize})
     }

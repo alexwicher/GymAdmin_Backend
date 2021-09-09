@@ -1,7 +1,4 @@
-class InventoryController{
-    static getInventoryById(request, reply) {
-        return Promise.resolve(undefined);
-    }
+class InventoryCS {
 
     static getInventoryOfFacility(request, reply) {
         return Promise.resolve(undefined);

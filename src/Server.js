@@ -1,6 +1,8 @@
 const sequelize = require('./MySequelize.js')
 const Router = require("./Router.js")
 const config = require("../appConfig");
+const User = require("./Models/User");
+const GeneralUtils = require("./Utils/GeneralUtils");
 
 let serverConfig = require('../appConfig.js').server
 
@@ -20,7 +22,14 @@ class Server {
             // request.headers Authorization -> Bearer <JWT>
             try {
                 if (config.server.authWhitelist.indexOf(request.context.config.url) < 0)
-                    await request.jwtVerify()
+                    await request.jwtVerify(async (err, decoded) => {
+                        if (err == null) {
+                            let currentSessionJWT = await User.findByPk(decoded.userId)
+                            if (currentSessionJWT.sessionJWT !== GeneralUtils.getJWT(request)) {
+                                reply.send(GeneralUtils.getErrorMsg("Not current user's session.", "Unauthorized", 401))
+                            }
+                        }
+                    })
             } catch (err) {
                 reply.send(err)
             }
