@@ -13,7 +13,7 @@ class Facility extends Model {
                 unique: true, allowNull: false
             },
             facilityNameSlug: {
-                type: DataTypes.STRING, allowNull: false
+                type: DataTypes.STRING
             },
             phone: {
                 type: DataTypes.STRING

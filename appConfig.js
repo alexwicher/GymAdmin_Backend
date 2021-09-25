@@ -16,7 +16,7 @@ config.server.port = 3000;
 config.server.secretKey = "95f266dd74ce2a3b55af2cec3062678d"
 config.server.jwtExpire = (1000 * 60 * 60) * 8.5 //(hour in ms)*hours
 
-config.server.authWhitelist = ['/user/signup']
+config.server.authWhitelist = ['/user/signup','/facilities']
 
 config.schemas.errorMsg = {
     "message": "",

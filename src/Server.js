@@ -36,6 +36,10 @@ class Server {
         })
 
         fastify.register(Router.routes)
+        fastify.register(require("fastify-cors"), {
+            origin: "http://127.0.0.1:4200/",
+            methods: ["POST"]
+        });
         fastify.listen(serverConfig.port, function (err, address) {
             if (err) {
                 fastify.log.error(err)
