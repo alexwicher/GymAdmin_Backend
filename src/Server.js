@@ -18,6 +18,12 @@ class Server {
             secret: config.server.secretKey
         })
 
+        fastify.register(require('fastify-cors'), {
+            origin: ['http://localhost:4200'],
+            allowedHeaders: ['Origin', 'X-Requested-With', 'Accept', 'Content-Type', 'Authorization'],
+            methods: ['GET', 'PUT', 'OPTIONS', 'POST', 'DELETE'],
+        });
+
         fastify.addHook("onRequest", async (request, reply) => {
             // request.headers Authorization -> Bearer <JWT>
             try {
@@ -36,10 +42,6 @@ class Server {
         })
 
         fastify.register(Router.routes)
-        fastify.register(require("fastify-cors"), {
-            origin: "http://127.0.0.1:4200/",
-            methods: ["POST"]
-        });
         fastify.listen(serverConfig.port, function (err, address) {
             if (err) {
                 fastify.log.error(err)
